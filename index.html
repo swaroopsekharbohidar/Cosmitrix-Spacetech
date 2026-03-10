@@ -1,62 +1,352 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cosmitrix SpaceTech</title>
+
+<title>Cosmitrix Spacetech</title>
+
+<link rel="icon" href="cosmitrix-icon.png">
 
 <style>
+
+:root{
+--bg:#0B0F19;
+--text:#FFFFFF;
+--accent:#00FFFF;
+--purple:#7B61FF;
+--soft:#C9D1D9;
+}
+
 body{
 margin:0;
 font-family:Arial;
+background:var(--bg);
 color:white;
-text-align:center;
-background:black;
-background-image:url("https://images.unsplash.com/photo-1446776877081-d282a0f896e2");
-background-size:cover;
+overflow-x:hidden;
 }
+
+/* galaxy background */
+
+.parallax{
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://i.imgur.com/9QZ6QkR.jpg");
+background-size:cover;
+z-index:-3;
+animation:galaxyMove 120s linear infinite;
+}
+
+@keyframes galaxyMove{
+from{background-position:0 0;}
+to{background-position:1000px 500px;}
+}
+
+/* stars */
+
+#stars{
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+z-index:-2;
+}
+
+/* navigation */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(11,15,25,0.85);
+padding:15px;
+text-align:center;
+backdrop-filter:blur(6px);
+z-index:10;
+}
+
+nav a{
+color:var(--soft);
+margin:0 20px;
+text-decoration:none;
+font-size:18px;
+}
+
+nav a:hover{
+color:var(--accent);
+}
+
+/* hero */
 
 header{
-padding:120px;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
 }
 
-h1{
-font-size:60px;
-letter-spacing:4px;
+.logo{
+width:420px;
+filter:drop-shadow(0 0 30px cyan);
 }
 
 .tagline{
-font-size:22px;
-opacity:0.9;
+font-size:24px;
+color:var(--soft);
+margin-top:10px;
 }
 
+/* orbit animation */
+
+.orbit{
+position:absolute;
+width:400px;
+height:400px;
+border:1px dashed rgba(255,255,255,0.2);
+border-radius:50%;
+animation:spin 25s linear infinite;
+}
+
+.satellite{
+position:absolute;
+top:-10px;
+left:50%;
+width:14px;
+height:14px;
+background:var(--accent);
+border-radius:50%;
+}
+
+@keyframes spin{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+/* sections */
+
 .section{
-background:rgba(0,0,0,0.7);
-padding:80px 20px;
+padding:100px 20px;
+max-width:1000px;
+margin:auto;
+text-align:center;
+}
+
+h2{
+color:var(--purple);
+font-size:40px;
+}
+
+p{
+color:var(--soft);
+font-size:18px;
+line-height:1.7;
+}
+
+/* project cards */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.card{
+background:#121826;
+padding:30px;
+border-radius:12px;
+box-shadow:0 0 15px rgba(0,255,255,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(0,255,255,0.4);
+}
+
+/* team */
+
+.team{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.member{
+background:#121826;
+padding:20px;
+border-radius:10px;
+}
+
+/* dashboard */
+
+.dashboard{
+margin-top:40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+}
+
+.metric{
+background:#141a33;
+padding:25px;
+border-radius:10px;
+}
+
+/* meteor */
+
+.meteor{
+position:fixed;
+width:2px;
+height:100px;
+background:linear-gradient(white,transparent);
+top:-100px;
+left:50%;
+animation:meteor 6s linear infinite;
+}
+
+@keyframes meteor{
+0%{transform:translate(0,0) rotate(45deg)}
+100%{transform:translate(-600px,800px) rotate(45deg)}
+}
+
+footer{
+text-align:center;
+padding:50px;
+color:var(--soft);
 }
 
 </style>
+
 </head>
 
 <body>
 
+<div class="parallax"></div>
+<div id="stars"></div>
+<div class="meteor"></div>
+
+<nav>
+<a href="#about">About</a>
+<a href="#research">Research</a>
+<a href="#projects">Projects</a>
+<a href="#dashboard">Dashboard</a>
+<a href="#team">Team</a>
+</nav>
+
 <header>
-<h1>COSMITRIX</h1>
+
+<div class="orbit">
+<div class="satellite"></div>
+</div>
+
+<img src="cosmitrix-logo.png" class="logo">
+
 <p class="tagline">Where Ideas Escape Gravity</p>
+
 </header>
 
-<div class="section">
-<h2>About</h2>
-<p>Cosmitrix is a student-led spacetech initiative exploring aerospace systems, future propulsion and space research.</p>
-</div>
+<section class="section" id="about">
 
-<div class="section">
+<h2>Cosmitrix Spacetech</h2>
+
+<p>
+Cosmitrix Spacetech explores the intersection of aerospace engineering, artificial intelligence, and scientific discovery.
+</p>
+
+</section>
+
+<section class="section" id="research">
+
+<h2>Research Areas</h2>
+
+<p>
+Future Propulsion Concepts  
+AI in Aerospace Systems  
+Theoretical Physics  
+Advanced Energy Systems
+</p>
+
+</section>
+
+<section class="section" id="projects">
+
 <h2>Projects</h2>
-<p>Orbital mechanics, propulsion research and advanced aerospace concepts.</p>
+
+<div class="cards">
+
+<div class="card">
+<h3>Orbital Simulation</h3>
+<p>Spacecraft trajectory experiments.</p>
 </div>
 
-<div class="section">
-<h2>Connect</h2>
-<p>Instagram: cosmitrixspacetech</p>
+<div class="card">
+<h3>Propulsion Concepts</h3>
+<p>Future propulsion research.</p>
 </div>
+
+<div class="card">
+<h3>Energy Systems</h3>
+<p>Advanced energy concepts.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="dashboard">
+
+<h2>Research Dashboard</h2>
+
+<div class="dashboard">
+
+<div class="metric">
+<h3>Active Projects</h3>
+<p>3</p>
+</div>
+
+<div class="metric">
+<h3>Research Fields</h3>
+<p>5</p>
+</div>
+
+<div class="metric">
+<h3>Papers</h3>
+<p>Coming Soon</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="team">
+
+<h2>Team</h2>
+
+<div class="team">
+
+<div class="member">
+<h3>Swaroop Sekhar Bohidar</h3>
+<p>Founder</p>
+</div>
+
+<div class="member">
+<h3>Future Researchers</h3>
+<p>Join Cosmitrix</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+Cosmitrix Spacetech  
+Exploring the Future of Space Technology
+
+</footer>
 
 </body>
 </html>
